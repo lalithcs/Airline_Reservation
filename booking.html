@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Airline Reservation System</title>
+</head>
+<style>
+  body {
+    background-image: url(air.jpg);
+  }
+    div .card{
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    div .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .pdetails {
+        width:100%;
+        height: auto;
+        background-color:rgba(255, 235, 205, 0.5);
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    section .name {
+        display: flex ;
+        flex-direction: column;
+        justify-items: center;
+        padding-top: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        padding-left: 15%;
+        padding-right: auto;
+        margin-top: 0%;
+    }
+    section .name input {
+      width:80%;
+      border-radius: 8cm;
+      height: 25px;
+      display: flex;
+      justify-self: center;
+    
+    }
+    .signup {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 30px;
+        align-self: center;
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+    .card {
+        width: 350px;
+        height: 450px;
+        transition: all 0.2s;
+        position: fixed;
+        display: grid;
+        justify-self: center;
+        cursor: pointer;
+        margin:auto;
+        margin-left: 40%;
+        margin-top: 10%;
+        background-image: radial-gradient( rgba(132, 128, 128, 1) 5%, rgba(76, 0, 255, 1) 90%);
+        border-radius: 8px;
+      }
+      
+      .card-inner {
+        width: inherit;
+        height: inherit;
+        background: rgba(255,255,255,.05);
+        box-shadow: 0 0 10px rgba(0,0,0,0.25);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+      }
+      .card:hover {
+        transform: scale(1.04) ;
+      }
+      
+      .circle {
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(#b0e633, #53ef7d);
+        border-radius: 50%;
+        position: absolute;
+        animation: move-up6 2s ease-in infinite alternate-reverse;
+      }
+      
+      .circle:nth-child(1) {
+        top: -25px;
+        left: -25px;
+      }
+      
+      .circle:nth-child(2) {
+        bottom: -25px;
+        right: -25px;
+        animation-name: move-down1;
+      }
+      
+      @keyframes move-up6 {
+        to {
+          transform: translateY(-10px);
+        }
+      }
+      
+      @keyframes move-down1 {
+        to {
+          transform: translateY(10px);
+        }
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        cursor: pointer;
+        width: 150px;
+        height: 50px;
+        background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+        border-radius: 30px;
+        border: 1px solid #8F9092;
+        transition: all 0.2s ease;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #606060;
+        text-shadow: 0 1px #fff;
+        margin-left: 30%;
+      }
+      button:hover {
+        box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+        transition: box-shadow 0.2s;
+      }
+      button:active {
+        box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+        transition: box-shadow 0.2s;
+      }
+      button:focus {
+        box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+      }      
+</style>
+<body>
+    <section class="pdetails">
+        <h1>Airline Reservation System</h1>
+    </section>
+    <div class="card">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="card-inner">
+          <form method="post" action="personal_details.php">
+            <section class="details">
+                <div class="form-group">
+                    <label class="signup"><strong>SIGN-UP</strong></strong></label>
+                </div>
+                <div class="form-group">
+                    <section class="name">
+                        <input type="text" name="name" placeholder="Enter your name">
+                    </section>
+                </div>
+                <div class="form-group">
+                  <section class="name">
+                      <input type="number" name="number" placeholder="Enter Your Number">
+                  </section>
+                </div>
+                <div class="form-group">
+                  <section class="name">
+      
+                    <input type="number" name="aadhar" placeholder="1234 5678 1234 2345">
+                  </section>
+                </div>
+                <div class="form-group">
+                  <section class="name">                    
+                    <input type="email" name="email" placeholder="someone@example.com">
+                  </section>
+                </div>
+                <div class="form-group">
+                  <section class="name">
+                    <input class="residence" name="residence" type="text" placeholder="Enter your Residence address">
+                  </section>
+                </div>
+                <div class="form-group">
+                  <section class="name">
+                    <input class="password" name="password" type="password" placeholder="Enter a Password for your account">
+                  </section>
+                </div>
+              
+                <div class="submit">
+                  <button type="submit">
+                    Submit
+                  </button>
+                </div>
+            </section>
+          </form>
+        </div>
+    </div>        
+</body>
+</html>

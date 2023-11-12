@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Airline Reservation System</title>
+</head>
+<style>
+    body {
+        background-image: url(air.jpg);
+      }
+    .pdetails {
+        width:100%;
+        height: auto;
+        background-color:rgba(255, 235, 205, 0.5);
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div .form-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .card {
+        width: 290px;
+        height: 354px;
+        border-radius: 30px;
+        background: rgba(4, 63, 255, 0.6)
+        ;
+        box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                    -15px -15px 30px rgb(60, 60, 60);
+        margin-top: 13%;
+        margin-left: 42%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    section .mod {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 15px;
+    }
+    label {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding-right: 5px;
+    }
+    button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background: #183153;
+        font-family: "Montserrat", sans-serif;
+        box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        border: none;
+       }
+       
+       button:after {
+        content: " ";
+        width: 0%;
+        height: 100%;
+        background: #FFD401;
+        position: absolute;
+        transition: all 0.4s ease-in-out;
+        right: 0;
+       }
+       
+       button:hover::after {
+        right: auto;
+        left: 0;
+        width: 100%;
+       }
+       
+       button span {
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+        padding: 18px 25px;
+        color: #fff;
+        font-size: 1.125em;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        z-index: 20;
+        transition: all 0.3s ease-in-out;
+       }
+       
+       button:hover span {
+        color: #183153;
+        animation: scaleUp 0.3s ease-in-out;
+       }
+       
+       @keyframes scaleUp {
+        0% {
+         transform: scale(1);
+        }
+       
+        50% {
+         transform: scale(0.95);
+        }
+       
+        100% {
+         transform: scale(1);
+        }
+       }    
+</style>
+<body>
+    <section class="pdetails">
+        <h1>Airline Reservation System</h1>
+    </section>
+        <div class="card">
+            <section class="bdetails">
+                <form method="post" action="booking_details.php">
+                    <div class="form-group">
+                        <section class="mod">
+                            <label for="boarding">Boarding Location:</label>
+                            <select name="boarding_details" id="boarding">
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Vizag">Vizag</option>
+                                <option value="Bangalore">Bangalore</option>
+                            </select>
+                        </section>
+                    </div>
+                    <div class="form-group">
+                        <section class="mod">
+                            <label for="destination">Destination Location:</label>
+                            <select name="destination_details" id="destination">
+                                <option value="Delhi">Delhi</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Vizag">Vizag</option>
+                                <option value="Bangalore">Bangalore</option>
+                            </select>
+                        </section>
+                        <script>
+                            const boarding = document.getElementById('boarding');
+                            const destination = document.getElementById('destination');
+                    
+                            boarding.addEventListener('change', () => {
+                                // Clear the second dropdown
+                                while (destination.firstChild) {
+                                    destination.removeChild(destination.firstChild);
+                                }
+                                // Repopulate the second dropdown based on the selection in the first dropdown
+                                if (boarding.value !== 'Hyderabad') {
+                                    const Hyderabad = document.createElement('option');
+                                    Hyderabad.value = 'Hyderabad';
+                                    Hyderabad.textContent = 'Hyderabad';
+                                    destination.appendChild(Hyderabad);
+                                }
+                                if (boarding.value !== 'Delhi') {
+                                    const Delhi = document.createElement('option');
+                                    Delhi.value = 'Delhi';
+                                    Delhi.textContent = 'Delhi';
+                                    destination.appendChild(Delhi);
+                                }
+                                if (boarding.value !== 'Vizag') {
+                                    const Vizag = document.createElement('option');
+                                    Vizag.value = 'Vizag';
+                                    Vizag.textContent = 'Vizag';
+                                    destination.appendChild(Vizag);
+                                }
+                                if (boarding.value !== 'Bangalore') {
+                                    const Bangalore = document.createElement('option');
+                                    Bangalore.value = 'Bangalore';
+                                    Bangalore.textContent = 'Bangalore';
+                                    destination.appendChild(Bangalore);
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <section class="mod">
+                            <label for="class">Class</label>
+                            <select name="priority" id="priority">
+                                <option value="business">Business</option>
+                                <option value="firstclass">First Class</option>
+                                <option value="economy">Economy</option>
+                            </select>
+                        </section>
+                    </div>
+                    <button type="submit" id="submitBtn">
+                        <span>BUTTON</span>
+                      </button>
+                    <script>
+                        document.getElementById('submitBtn').addEventListener('click', () => {
+                          const boarding = document.getElementById('boarding').value;
+                          const destination = document.getElementById('destination').value;
+                          const priority = document.getElementById('priority').value;
+                      
+                          // Create an object to send to the server
+                          const formData = {
+                            boarding: boarding,
+                            destination: destination,
+                            priority: priority,
+                          };
+                      
+                          // Send the data to the server using an HTTP request (AJAX)
+                          const xhttp = new XMLHttpRequest();
+                          xhttp.open('POST', 'process_reservation.php', true);
+                          xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                          xhttp.onreadystatechange = function () {
+                            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                              // Handle the server response (if needed)
+                              console.log(xhttp.responseText);
+                            }
+                          };
+                          xhttp.send('data=' + JSON.stringify(formData));
+                        });
+                      </script>
+                      
+                </form>
+            </section>
+        </div>
+</body>
+</html>
